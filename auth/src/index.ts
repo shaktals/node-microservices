@@ -10,6 +10,9 @@ import { signOutRouter } from './routes/signOut'
 import { signUpRouter } from './routes/signUp'
 
 import { errorHandler } from './middlewares/errorHandler'
+import { currentUser } from './middlewares/currentUser'
+import { requireAuth } from './middlewares/requireAuth'
+
 import { NotFoundError } from './errors/NotFoundError'
 
 const app = express()
@@ -22,10 +25,11 @@ app.use(
     secure: true,
   })
 )
+app.use(currentUser)
 
 app.use(currentUserRouter)
 app.use(signInRouter)
-app.use(signOutRouter)
+app.use(requireAuth, signOutRouter)
 app.use(signUpRouter)
 
 app.all('*', async () => {
