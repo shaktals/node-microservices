@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import { body, validationResult } from 'express-validator'
+import jwt from 'jsonwebtoken'
 
 import { User } from '../models/User'
 import { RequestValidationError } from '../errors/RequestValidationError'
@@ -31,13 +32,17 @@ router.post('/api/users/signup', [
       throw new BadRequestError('Email in use')
     }
 
-    const newUser = User.build({ email, password })
-    await newUser.save()
+    const user = User.build({ email, password })
+    await user.save()
 
-    const response = newUser.toObject()
-    delete response.password
+    const userJwt = jwt.sign({
+      id: user.id,
+      email: user.email,
+    }, process.env.JWT_KEY!)
 
-    res.status(201).send(response)
+    req.session = { jwt: userJwt }
+
+    res.status(201).send(user)
   }
 )
 
