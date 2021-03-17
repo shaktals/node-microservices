@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { requireAuth } from '../middlewares/requireAuth'
+import { requireAuth } from '@shaktickets/common'
 
 const router = express.Router()
 

@@ -13,3 +13,6 @@
 #### Running
 
 - At the project root folder run _skaffold dev_
+
+##### Credits
+Based on the excellent [course on Node.js microservices](https://www.udemy.com/course/microservices-with-node-js-and-react) by Stephen Grider.

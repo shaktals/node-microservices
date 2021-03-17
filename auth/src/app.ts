@@ -8,10 +8,7 @@ import { signInRouter } from './routes/signIn'
 import { signOutRouter } from './routes/signOut'
 import { signUpRouter } from './routes/signUp'
 
-import { errorHandler } from './middlewares/errorHandler'
-import { currentUser } from './middlewares/currentUser'
-
-import { NotFoundError } from './errors/NotFoundError'
+import { errorHandler, currentUser, NotFoundError } from '@shaktickets/common'
 
 const app = express()
 
