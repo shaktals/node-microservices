@@ -7,6 +7,7 @@ import { errorHandler, currentUser, NotFoundError } from '@shaktickets/common'
 
 import { createTicketRouter } from './routes/new'
 import { showTicketRouter } from './routes/show'
+import { ticketIndexRouter } from './routes/index'
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.use(currentUser)
 
 app.use(createTicketRouter)
 app.use(showTicketRouter)
+app.use(ticketIndexRouter)
 
 app.all('*', async () => {
   throw new NotFoundError()

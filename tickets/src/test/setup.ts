@@ -6,6 +6,7 @@ declare global {
   namespace NodeJS {
     interface Global {
       createCookie(): string[];
+      generateId(): string;
     }
   }
 }
@@ -49,3 +50,5 @@ global.createCookie = () => {
 
   return [`express:sess=${base64}`]
 }
+
+global.generateId = () => mongoose.Types.ObjectId().toHexString()
