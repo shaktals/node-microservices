@@ -23,8 +23,8 @@ app.use(
 app.use(currentUser)
 
 app.use(createTicketRouter)
-app.use(showTicketRouter)
 app.use(ticketIndexRouter)
+app.use(showTicketRouter)
 app.use(updateTicketRouter)
 
 app.all('*', async () => {
