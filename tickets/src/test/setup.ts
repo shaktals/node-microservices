@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 declare global {
   namespace NodeJS {
     interface Global {
-      createCookie(): string[];
+      createCookie(): { cookie: string[], userId: string };
       generateId(): string;
     }
   }
@@ -39,7 +39,7 @@ afterAll(async () => {
 
 global.createCookie = () => {
   const payload = {
-    id: 'random-string',
+    id: global.generateId(),
     email: 'test@test.com',
   }
 
@@ -48,7 +48,7 @@ global.createCookie = () => {
   const sessionJson = JSON.stringify(session)
   const base64 = Buffer.from(sessionJson).toString('base64')
 
-  return [`express:sess=${base64}`]
+  return { cookie: [`express:sess=${base64}`], userId: payload.id }
 }
 
 global.generateId = () => mongoose.Types.ObjectId().toHexString()

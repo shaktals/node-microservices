@@ -22,7 +22,7 @@ it('can only be accessed if the user is signed in', async () => {
 it('does not return 401 if the user is signed in', async () => {
   const response = await request(app)
     .post('/api/tickets')
-    .set('Cookie', global.createCookie())
+    .set('Cookie', global.createCookie().cookie)
     .send({})
   
   expect(response.status).not.toEqual(401)
@@ -31,14 +31,14 @@ it('does not return 401 if the user is signed in', async () => {
 it('returns an error if an invalid title is provided', async () => {
   const response = await request(app)
     .post('/api/tickets')
-    .set('Cookie', global.createCookie())
+    .set('Cookie', global.createCookie().cookie)
     .send({ title: '', price: 10 })
 
   expect(response.status).toEqual(400)
 
   const resp2 = await request(app)
     .post('/api/tickets')
-    .set('Cookie', global.createCookie())
+    .set('Cookie', global.createCookie().cookie)
     .send({ price: 10 })
   
   expect(response.status).toEqual(400)
@@ -47,14 +47,14 @@ it('returns an error if an invalid title is provided', async () => {
 it('returns an error if an invalid price is provided', async () => {
   const response = await request(app)
     .post('/api/tickets')
-    .set('Cookie', global.createCookie())
+    .set('Cookie', global.createCookie().cookie)
     .send({ title: 'Random', price: -10 })
 
   expect(response.status).toEqual(400)
 
   const resp2 = await request(app)
     .post('/api/tickets')
-    .set('Cookie', global.createCookie())
+    .set('Cookie', global.createCookie().cookie)
     .send({ title: 'Valid' })
 
   expect(response.status).toEqual(400)
@@ -69,7 +69,7 @@ it('creates a ticket if inputs are valid', async () => {
 
   const response = await request(app)
     .post('/api/tickets')
-    .set('Cookie', global.createCookie())
+    .set('Cookie', global.createCookie().cookie)
     .send(ticketAttrs)
 
   expect(response.status).toEqual(201)
