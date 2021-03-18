@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 // Describe props required for a new user
 interface TicketAttrs {
   title: string;
-  price: string;
+  price: number;
   userId: string;
 }
 
@@ -15,7 +15,7 @@ interface TicketModel extends mongoose.Model<TicketDoc> {
 // Describe props that a User document has
 interface TicketDoc extends mongoose.Document {
   title: string;
-  price: string;
+  price: number;
   userId: string;
 }
 
