@@ -1,7 +1,10 @@
 import request from 'supertest'
 
+import { Subjects } from '@shaktickets/common'
+
 import { app } from '../../app'
 import { Ticket } from '../../models/Ticket'
+import { natsWrapper } from '../../natsWrapper'
 
 const ticketAttrs = {
   title: 'Cool show',
@@ -102,4 +105,28 @@ it('updates the ticket given valid inputs', async () => {
     .expect(200)
   
   expect(response.body).toMatchObject({ ...ticketUpdate, id: ticket.id })
+})
+
+it('publishes ticket:updated event given valid inputs', async () => {
+  const { cookie, userId } = global.createCookie()
+
+  const ticket = await createTicket(userId)
+  const ticketUpdate = {
+    title: 'Coolest',
+    price: 25,
+  }
+
+  const response = await request(app)
+    .put(`/api/tickets/${ticket.id}`)
+    .set('Cookie', cookie)
+    .send(ticketUpdate)
+    .expect(200)
+
+  const ticketStr = JSON.stringify(response.body)
+
+  expect(natsWrapper.client.publish).toHaveBeenCalledWith(
+    Subjects.TicketUpdated,
+    ticketStr,
+    expect.any(Function)
+  )
 })
