@@ -17,7 +17,7 @@ app.use(json())
 app.use(
   cookieSession({
     signed: false,
-    secure: process.env.NODE_ENV !== 'development',
+    secure: !['development', 'test'].includes(process.env.NODE_ENV!),
   })
 )
 app.use(currentUser)
