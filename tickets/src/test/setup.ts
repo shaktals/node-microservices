@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken'
 declare global {
   namespace NodeJS {
     interface Global {
-      createCookie(): { cookie: string[], userId: string };
-      generateId(): string;
+      createCookie(): { cookie: string[], userId: string }
+      generateId(): string
     }
   }
 }

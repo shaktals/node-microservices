@@ -4,19 +4,19 @@ import { PasswordManager } from '../services/PasswordManager'
 
 // Describe props required for a new user
 interface UserAttrs {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 // Describe props that a User model has
 interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAttrs): UserDoc;
+  build(attrs: UserAttrs): UserDoc
 }
 
 // Describe props that a User document has
 interface UserDoc extends mongoose.Document {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const userSchema = new mongoose.Schema({

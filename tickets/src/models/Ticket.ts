@@ -2,21 +2,21 @@ import mongoose from 'mongoose'
 
 // Describe props required for a new user
 interface TicketAttrs {
-  title: string;
-  price: number;
-  userId: string;
+  title: string
+  price: number
+  userId: string
 }
 
 // Describe props that a User model has
 interface TicketModel extends mongoose.Model<TicketDoc> {
-  build(attrs: TicketAttrs): TicketDoc;
+  build(attrs: TicketAttrs): TicketDoc
 }
 
 // Describe props that a User document has
 interface TicketDoc extends mongoose.Document {
-  title: string;
-  price: number;
-  userId: string;
+  title: string
+  price: number
+  userId: string
 }
 
 const ticketSchema = new mongoose.Schema({

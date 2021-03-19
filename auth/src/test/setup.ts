@@ -6,7 +6,7 @@ import { app } from '../app'
 declare global {
   namespace NodeJS {
     interface Global {
-      signUp(): Promise<string[]>;
+      signUp(): Promise<string[]>
     }
   }
 }
