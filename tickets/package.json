@@ -1,7 +1,7 @@
 {
   "name": "ticketing-tickets",
   "version": "1.0.0",
-  "description": "Auth service for ticketing sample app",
+  "description": "Tickets service for ticketing sample app",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
