@@ -1,7 +1,4 @@
 import express, { Request, Response } from 'express'
-import { param } from 'express-validator'
-
-import { NotFoundError, validateRequest } from '@shaktickets/common'
 
 import { Ticket } from '../models/Ticket'
 
