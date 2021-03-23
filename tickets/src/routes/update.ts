@@ -45,6 +45,7 @@ router.put('/api/tickets/:ticketId', requireAuth, [
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,
+      version: ticket.version,
       id: ticket.id,
     })
 
