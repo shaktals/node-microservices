@@ -1,7 +1,7 @@
 {
   "name": "ticketing-orders",
   "version": "1.0.0",
-  "description": "Orders service for ticketing sample app",
+  "description": "Orders service for the ticketing sample app",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
@@ -28,6 +28,7 @@
     "express-validator": "^6.10.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "5.10.19",
+    "mongoose-update-if-current": "^1.4.0",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.3"
