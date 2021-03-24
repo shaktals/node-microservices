@@ -13,7 +13,7 @@ build:
       docker:
         dockerfile: Dockerfile
       sync:
-        manual: 
+        manual:
           - src: 'src/**/*.ts'
             dest: .
     - image: shaktals/client
@@ -29,7 +29,7 @@ build:
       docker:
         dockerfile: Dockerfile
       sync:
-        manual: 
+        manual:
           - src: 'src/**/*.ts'
             dest: .
     - image: shaktals/orders
@@ -37,6 +37,14 @@ build:
       docker:
         dockerfile: Dockerfile
       sync:
-        manual: 
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: shaktals/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
           - src: 'src/**/*.ts'
             dest: .
