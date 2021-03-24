@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import { body, param } from 'express-validator'
 
-import { NotAuthorizedError, NotFoundError, requireAuth, validateRequest } from '@shaktickets/common'
+import { BadRequestError, NotAuthorizedError, NotFoundError, requireAuth, validateRequest } from '@shaktickets/common'
 
 import { natsWrapper } from '../natsWrapper'
 import { Ticket } from '../models/Ticket'
@@ -32,6 +32,10 @@ router.put('/api/tickets/:ticketId', requireAuth, [
 
     if (!ticket) {
       throw new NotFoundError()
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError('Ticket has a current active order')
     }
 
     if (ticket.userId !== id) {

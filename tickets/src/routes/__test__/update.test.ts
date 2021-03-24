@@ -89,6 +89,25 @@ it('returns 400 for invalid title or price', async () => {
     .expect(400)
 })
 
+it('returns 400 if ticket is reserved', async () => {
+  const { cookie, userId } = global.createCookie()
+
+  const ticket = await createTicket(userId)
+  ticket.set({ orderId: global.generateId() })
+  await ticket.save()
+
+  const ticketUpdate = {
+    ...ticketAttrs,
+    price: 25,
+  }
+
+  await request(app)
+    .put(`/api/tickets/${ticket.id}`)
+    .set('Cookie', cookie)
+    .send(ticketUpdate)
+    .expect(400)
+})
+
 it('updates the ticket given valid inputs', async () => {
   const { cookie, userId } = global.createCookie()
 
