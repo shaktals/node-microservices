@@ -1,4 +1,3 @@
-
 import { Message } from 'node-nats-streaming'
 
 import { TicketCreatedEvent } from '@shaktickets/common'
