@@ -1,6 +1,6 @@
 {
   "name": "ticketing-orders",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Orders service for the ticketing sample app",
   "main": "index.js",
   "scripts": {
