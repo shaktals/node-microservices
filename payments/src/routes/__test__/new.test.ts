@@ -2,6 +2,7 @@ import request from 'supertest'
 
 import { app } from '../../app'
 import { Order, OrderStatus } from '../../models/Order'
+import { Payment } from '../../models/Payment'
 import { stripe } from '../../stripe'
 
 it('returns a 404 if the order does not exist', async () => {
@@ -75,7 +76,7 @@ it('returns a 201 if given valid inputs', async () => {
 
   const token = 'tok_visa'
 
-  await request(app)
+  const response = await request(app)
     .post('/api/payments')
     .set('Cookie', cookie)
     .send({
@@ -92,4 +93,9 @@ it('returns a 201 if given valid inputs', async () => {
     currency: 'usd',
     source: token,
   })
+
+  const payment = await Payment.findOne({ orderId: order.id })
+  expect(payment).not.toBe(null)
+
+  expect(response.body.id).toEqual(payment?.id)
 })
