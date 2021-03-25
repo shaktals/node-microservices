@@ -6,7 +6,7 @@ import { app } from '../../app'
 import { Ticket } from '../../models/Ticket'
 import { natsWrapper } from '../../natsWrapper'
 
-it('has a route handler listening to /api/tickets for post requrests', async () => {
+it('has a route handler listening to /api/tickets for post requests', async () => {
   const response = await request(app)
     .post('/api/tickets')
     .send({})

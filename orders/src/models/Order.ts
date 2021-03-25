@@ -52,7 +52,6 @@ const orderSchema = new mongoose.Schema({
       delete ret._id
     }
   },
-  versionKey: false,
 })
 
 orderSchema.set('versionKey', 'version')

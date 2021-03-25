@@ -8,8 +8,10 @@
 - [Nginx-ingress](https://kubernetes.github.io/ingress-nginx/deploy/) controller
 - Docker engine
 - [Skaffold](https://skaffold.dev/)
-- Update your OS _hosts_ file to point [ticketing.dev](http://ticketing.dev) to your local Kubernetes cluster IP address
-- Create local environment variables JWT_KEY, it can be any string
+- Update your OS _hosts_ file to point [ticketing.dev](https://ticketing.dev) to your local Kubernetes cluster IP address
+- Create local environment variables 
+  - JWT_KEY, it can be any string
+  - STRIPE_KEY, it need to be a valid stripe developer secret key (test key will do)
 - You might need to build each service's Docker image once manually before _skaffold_ can do it for you
   - Go to each service project root and run: `docker build -t {your_docker_id}/{service_name} .`
   - Then push it to docker hub running: `docker push {your_docker_id}/{service_name}`
