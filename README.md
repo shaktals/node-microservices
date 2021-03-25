@@ -9,7 +9,7 @@
 - Docker engine
 - [Skaffold](https://skaffold.dev/)
 - Update your OS _hosts_ file to point [ticketing.dev](https://ticketing.dev) to your local Kubernetes cluster IP address
-- Create local environment variables 
+- Create local environment variables
   - JWT_KEY, it can be any string
   - STRIPE_KEY, it need to be a valid stripe developer secret key (test key will do)
 - You might need to build each service's Docker image once manually before _skaffold_ can do it for you
