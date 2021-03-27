@@ -1,6 +1,6 @@
 {
   "name": "ticketing-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Next.js sample client to ticketing.dev microservices",
   "main": "index.js",
   "scripts": {
